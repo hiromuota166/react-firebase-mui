@@ -7,3 +7,9 @@ export type Member ={
   year: number; //学年
   campus: string;
 };
+
+export type Board = {
+  id: string;
+  title: string;
+  text: string;
+}
