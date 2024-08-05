@@ -5,6 +5,7 @@ import ListItemText from '@mui/material/ListItemText';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import AssignmentIcon from '@mui/icons-material/Assignment';
+import CasinoIcon from '@mui/icons-material/Casino';
 
 export const mainListItems = (
   <React.Fragment>
@@ -25,6 +26,12 @@ export const mainListItems = (
         <AssignmentIcon />
       </ListItemIcon>
       <ListItemText primary="board" />
+    </ListItemButton>
+    <ListItemButton component='a' href='/game'>
+      <ListItemIcon>
+        <CasinoIcon />
+      </ListItemIcon>
+      <ListItemText primary="game" />
     </ListItemButton>
   </React.Fragment>
 );

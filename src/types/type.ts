@@ -1,4 +1,4 @@
-export type Member ={
+export interface Member {
   id: string;
   name: string;
   reading: string; //ふりがな
@@ -8,8 +8,15 @@ export type Member ={
   campus: string;
 };
 
-export type Board = {
+export interface Board {
   id: string;
   title: string;
   text: string;
+}
+
+export type SquareType = string | null;
+
+export interface SquareProps {
+  value: SquareType;
+  onSquareClick: React.MouseEventHandler<HTMLButtonElement>;
 }

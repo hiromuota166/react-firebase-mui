@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { collection, getDocs, addDoc, updateDoc, doc } from 'firebase/firestore';
 import { db } from '../firebase';
 import RegistUser from './RegistUser';
+import Title from './Title';
 
 type Member = {
   id: string;
@@ -55,7 +56,7 @@ const MemberPage: React.FC = () => {
 
   return (
     <div>
-      <h1>メンバーを追加してください</h1>
+      <Title>メンバー追加</Title>
       <RegistUser/>
       {/* <form 
         action="post" 
