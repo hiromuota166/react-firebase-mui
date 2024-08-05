@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box } from '@mui/material';
-import { SquareType, SquareProps } from '../types/type';
+import { SquareType, SquareProps, BoardType } from '../types/type';
 import Title from './Title';
 
 const Square: React.FC<SquareProps> = ({ value, onSquareClick }) => {
@@ -14,26 +14,20 @@ const Square: React.FC<SquareProps> = ({ value, onSquareClick }) => {
   );
 };
 
-const Board: React.FC = () => {
-  const [xIsNext, setXIsNext] = useState(true); //手版の追跡
-  const [squares, setSquares] = useState<SquareType[]>(Array(9).fill(null));
+const Board: React.FC<BoardType> = ({ xIsNext, squares, onPlay }) => {
 
   const handleClick = (index: number) => {
     if (squares[index] || calculateWinner(squares)) {
       return;
     }
-    if (squares[index]) {
-      return;
-    }
 
-    const nextSquares = squares.slice(); //イミュータビリティ。.sliceはコピー
+    const nextSquares = squares.slice(); //イミュータビリティ。sliceはコピー
     if (xIsNext) {
       nextSquares[index] = 'X';
     } else {
       nextSquares[index] = 'O';
     }
-    setXIsNext(!xIsNext);
-    setSquares(nextSquares);
+    onPlay(nextSquares);
   }
 
   const winner = calculateWinner(squares);
@@ -45,7 +39,7 @@ const Board: React.FC = () => {
   }
 
   return (
-    <div className='flex'>
+    <div className='flex flex-col'>
       <Title>{status}</Title>
       <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 4rem)' }}>
         {squares.map((value, index) => (
@@ -69,7 +63,7 @@ const calculateWinner = (squares: SquareType[]): SquareType => {
     [1, 4, 7],
     [2, 5, 8],
     [0, 4, 8],
-    [2, 4, 6]
+    [2, 4, 6],
   ];
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
@@ -80,4 +74,46 @@ const calculateWinner = (squares: SquareType[]): SquareType => {
   return null;
 }
 
-export default Board;
+const Game: React.FC = () => {
+  const [history, setHistory] = useState<SquareType[][]>([Array(9).fill(null)]);
+  const [currentMove, setCurrentMove] = useState(0);
+  const xIsNext = currentMove % 2 === 0;
+  const currentSquares = history[currentMove];
+
+  const handlePlay = (nextSquares: SquareType[]) => {
+    const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
+    setHistory(nextHistory);
+    setCurrentMove(nextHistory.length - 1);
+  }
+
+  const jumpTo = (nextMove: number) => {
+    setCurrentMove(nextMove);
+  }
+
+  const moves = history.map((squares, move) => {
+    let description;
+    if (move > 0) {
+      description = 'Go to move #' + move;
+    } else {
+      description = 'Go to game start';
+    }
+    return (
+      <li key={move}>
+        <button onClick={() => jumpTo(move)}>{description}</button>
+      </li>
+    );
+  });
+
+  return (
+    <div className='flex'>
+      <div>
+        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay}/>
+      </div>
+      <div>
+        <ol>{moves}</ol>
+      </div>
+    </div>
+  );
+}
+
+export default Game;

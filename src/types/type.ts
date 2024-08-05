@@ -20,3 +20,9 @@ export interface SquareProps {
   value: SquareType;
   onSquareClick: React.MouseEventHandler<HTMLButtonElement>;
 }
+
+export interface BoardType {
+  xIsNext: boolean;
+  squares: SquareType[];
+  onPlay: (nextSquares: SquareType[]) => void;
+}
