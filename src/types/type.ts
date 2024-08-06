@@ -26,3 +26,5 @@ export interface BoardType {
   squares: SquareType[];
   onPlay: (nextSquares: SquareType[]) => void;
 }
+
+export type GptText = string;
