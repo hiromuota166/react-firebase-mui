@@ -28,3 +28,8 @@ export interface BoardType {
 }
 
 export type GptText = string;
+
+export interface Message {
+  role: 'user' | 'assistant';
+  content: string;
+}
