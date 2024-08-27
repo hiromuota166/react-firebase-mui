@@ -5,7 +5,6 @@ import ListItemText from '@mui/material/ListItemText';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import AssignmentIcon from '@mui/icons-material/Assignment';
-import CasinoIcon from '@mui/icons-material/Casino';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
 
 export const mainListItems = (
@@ -14,31 +13,37 @@ export const mainListItems = (
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
-      <ListItemText primary="Home" />
+      <ListItemText primary="ホーム画面" />
     </ListItemButton>
-    <ListItemButton component='a' href='/member'>
+    <ListItemButton component='a' href='/Member'>
       <ListItemIcon>
         <PeopleAltIcon />
       </ListItemIcon>
-      <ListItemText primary="Member" />
+      <ListItemText primary="選手登録画面" />
     </ListItemButton>
     <ListItemButton component='a' href='/Board'>
       <ListItemIcon>
         <AssignmentIcon />
       </ListItemIcon>
-      <ListItemText primary="Board" />
+      <ListItemText primary="試合登録画面" />
     </ListItemButton>
-    <ListItemButton component='a' href='/Game'>
+    <ListItemButton component='a' href='/Order'>
       <ListItemIcon>
-        <CasinoIcon />
+        <AssignmentIcon />
       </ListItemIcon>
-      <ListItemText primary="Game" />
+      <ListItemText primary="オーダー入力画面" />
     </ListItemButton>
-    <ListItemButton component='a' href='/GPT'>
+    <ListItemButton component='a' href='/Court'>
       <ListItemIcon>
-        <SmartToyIcon />
+        <AssignmentIcon />
       </ListItemIcon>
-      <ListItemText primary="GPT" />
+      <ListItemText primary="コート状況画面" />
+    </ListItemButton>
+    <ListItemButton component='a' href='/Result'>
+      <ListItemIcon>
+        <AssignmentIcon />
+      </ListItemIcon>
+      <ListItemText primary="試合結果記入画面" />
     </ListItemButton>
   </React.Fragment>
 );

@@ -1,10 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
-import HomePage from './components/HomePage'
-import MemberPage from './components/MemberPage'
-import BoardPage from './components/BoardPage';
-import GamePage from './components/GamePage';
-import GPTPage from './components/GPTPage';
+import HomePage from './pages/HomePage'
+import MemberPage from './pages/MemberPage'
+import BoardPage from './pages/BoardPage';
+import OrderPage from './pages/OrderPage';
+import CourtPage from './pages/CourtPage';
+import ResultPage from './pages/ResultPage';
 
 const App = () => {
   return (
@@ -14,8 +15,9 @@ const App = () => {
           <Route index element={<HomePage />} />
           <Route path="Member" element={<MemberPage />} />
           <Route path="Board" element={<BoardPage />} />
-          <Route path="Game" element={<GamePage />} />
-          <Route path="GPT" element={<GPTPage />} />
+          <Route path="Order" element={<OrderPage />} />
+          <Route path="Court" element={<CourtPage />} />
+          <Route path="Result" element={<ResultPage />} />
         </Route>
       </Routes>
     </Router>
