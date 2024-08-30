@@ -8,19 +8,24 @@ type PlayersType = {
   group_id?: string | null;
 }
 
+type GroupsType = {
+  id: string;
+  groupName: string;
+}
+
 const PlayerCrudComponent = () => {
   const [newPlayers, setNewPlayers] = useState<PlayersType[]>([]);
   const [players, setPlayers] = useState<PlayersType[]>([]);
+  const [groups, setGroups] = useState<GroupsType[]>([]);
   const [name, setName] = useState<string>('');
   const [deletePlayerName, setDeletePlayerName] = useState<string>('');
-  const [error, setError] = useState<string | null>(null); // エラーメッセージの状態を追加
+  const [error, setError] = useState<string | null>(null);
 
   // 選手新規作成
   const createPlayer = async ({ name, group_id }: PlayersType) => {
     const { data, error } = await supabase.from('players').insert([{ name, group_id }]);
 
     if (error) {
-      console.error('Error adding player:', error.message);
       setError('選手の追加に失敗しました。');
       return;
     }
@@ -28,7 +33,8 @@ const PlayerCrudComponent = () => {
     if (data) {
       setNewPlayers([...newPlayers, ...data]);
       setName('');
-      setError(null); // 成功時にエラーメッセージをクリア
+      setError(null);
+      getPlayers(); // 新しい選手を追加した後、選手リストを再取得
     }
   };
 
@@ -58,7 +64,6 @@ const PlayerCrudComponent = () => {
       return;
     }
 
-    // 削除成功時にプレイヤーリストを再取得
     getPlayers();
     setDeletePlayerName('');
     setError(null);
@@ -85,9 +90,31 @@ const PlayerCrudComponent = () => {
     }
   };
 
+  // グループ一覧を取得する関数
+  const getGroups = async () => {
+    const { data, error } = await supabase.from('groups').select('*');
+
+    if (error) {
+      console.error('Error fetching groups:', error.message);
+      setError('グループの取得に失敗しました。');
+      return;
+    }
+
+    if (data) {
+      setGroups(data);
+    }
+  };
+
   useEffect(() => {
     getPlayers();
+    getGroups();
   }, []);
+
+  const getGroupName = (groupId: string | null | undefined) => {
+    if (!groupId) return '未所属';
+    const group = groups.find(g => g.id === groupId);
+    return group ? group.groupName : '未所属';
+  };
 
   return (
     <Box p={3}>
@@ -129,7 +156,7 @@ const PlayerCrudComponent = () => {
           <TableHead>
             <TableRow>
               <TableCell>選手名</TableCell>
-              <TableCell align="right">グループID</TableCell>
+              <TableCell align="right">グループ名</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -138,7 +165,7 @@ const PlayerCrudComponent = () => {
                 <TableCell component="th" scope="row">
                   {player.name}
                 </TableCell>
-                <TableCell align="right">{player.group_id || '未所属'}</TableCell>
+                <TableCell align="right">{getGroupName(player.group_id)}</TableCell>
               </TableRow>
             ))}
           </TableBody>
