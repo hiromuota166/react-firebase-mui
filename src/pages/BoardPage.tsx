@@ -1,10 +1,12 @@
 import React from 'react'
-import MatchQualifyFinal from '../components/MatchQualifyFinal'
+import MatchQualifying from '../components/MatchQualifying'
+import MatchFinal from '../components/MatchFinal'
 
 const BoardPage = () => {
   return (
     <>
-      <MatchQualifyFinal/>
+      <MatchQualifying/>
+      <MatchFinal/>
     </>
   )
 }

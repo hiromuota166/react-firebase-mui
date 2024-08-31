@@ -1,5 +1,5 @@
 import { Tables } from "./database.types"
 
-type typePlayers = Tables<'players'>
-type typeCourts = Tables<'courts'>
-type typeGroups = Tables<'groups'>
+export type typePlayers = Tables<'players'>
+export type typeCourts = Tables<'courts'>
+export type typeGroups = Tables<'groups'>
