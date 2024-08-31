@@ -1,12 +1,10 @@
+import React from 'react'
+import MatchQualifyFinal from '../components/MatchQualifyFinal'
+
 const BoardPage = () => {
   return (
     <>
-    <div>役割: グループを予選グループAまたはBに振り分ける画面です。
-    内容: グループを選択して予選グループに割り当てる機能。</div>
-    <div>役割2: 全試合のスケジュールを管理し、matches テーブルに挿入する画面です。
-内容: 試合日時、場所、対戦カードの設定フォーム。</div>
-    <div>役割3: 決勝トーナメントの進行を管理する画面です。
-内容: 決勝トーナメントの対戦カード、進行状況、試合結果の管理。</div>
+      <MatchQualifyFinal/>
     </>
   )
 }
