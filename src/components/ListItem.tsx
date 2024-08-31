@@ -5,7 +5,10 @@ import ListItemText from '@mui/material/ListItemText';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import AssignmentIcon from '@mui/icons-material/Assignment';
-import SmartToyIcon from '@mui/icons-material/SmartToy';
+import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
+import ListAltIcon from '@mui/icons-material/ListAlt';
+import SportsTennisIcon from '@mui/icons-material/SportsTennis';
+import LanIcon from '@mui/icons-material/Lan';
 
 export const mainListItems = (
   <React.Fragment>
@@ -23,25 +26,25 @@ export const mainListItems = (
     </ListItemButton>
     <ListItemButton component='a' href='/Board'>
       <ListItemIcon>
-        <AssignmentIcon />
+        <AppRegistrationIcon />
       </ListItemIcon>
       <ListItemText primary="試合登録画面" />
     </ListItemButton>
     <ListItemButton component='a' href='/Order'>
       <ListItemIcon>
-        <AssignmentIcon />
+        <ListAltIcon />
       </ListItemIcon>
       <ListItemText primary="オーダー入力画面" />
     </ListItemButton>
     <ListItemButton component='a' href='/Court'>
       <ListItemIcon>
-        <AssignmentIcon />
+        <SportsTennisIcon />
       </ListItemIcon>
       <ListItemText primary="コート状況画面" />
     </ListItemButton>
     <ListItemButton component='a' href='/Result'>
       <ListItemIcon>
-        <AssignmentIcon />
+        <LanIcon />
       </ListItemIcon>
       <ListItemText primary="試合結果記入画面" />
     </ListItemButton>
