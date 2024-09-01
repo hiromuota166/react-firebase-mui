@@ -6,6 +6,7 @@ import BoardPage from './pages/BoardPage';
 import OrderPage from './pages/OrderPage';
 import CourtPage from './pages/CourtPage';
 import ResultPage from './pages/ResultPage';
+import RecreationPage from './pages/RecreationPage';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="Order" element={<OrderPage />} />
           <Route path="Court" element={<CourtPage />} />
           <Route path="Result" element={<ResultPage />} />
+          <Route path="RecreationResult" element={<RecreationPage />} />
         </Route>
       </Routes>
     </Router>

@@ -4,7 +4,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
-import AssignmentIcon from '@mui/icons-material/Assignment';
+import SportsCricketIcon from '@mui/icons-material/SportsCricket';
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import SportsTennisIcon from '@mui/icons-material/SportsTennis';
@@ -47,6 +47,12 @@ export const mainListItems = (
         <LanIcon />
       </ListItemIcon>
       <ListItemText primary="試合結果記入画面" />
+    </ListItemButton>
+    <ListItemButton component='a' href='/RecreationResult'>
+      <ListItemIcon>
+        <SportsCricketIcon />
+      </ListItemIcon>
+      <ListItemText primary="レク結果記入画面" />
     </ListItemButton>
   </React.Fragment>
 );
