@@ -47,22 +47,37 @@ export type Database = {
       }
       groups: {
         Row: {
+          bingo_score: number | null
           final_stage: boolean | null
           groupName: string
           id: string
+          intro_quiz_score: number | null
           qualifying: number | null
+          tennis_tournament_score: number | null
+          unique_answers_score: number | null
+          whisper_game_score: number | null
         }
         Insert: {
+          bingo_score?: number | null
           final_stage?: boolean | null
           groupName: string
           id?: string
+          intro_quiz_score?: number | null
           qualifying?: number | null
+          tennis_tournament_score?: number | null
+          unique_answers_score?: number | null
+          whisper_game_score?: number | null
         }
         Update: {
+          bingo_score?: number | null
           final_stage?: boolean | null
           groupName?: string
           id?: string
+          intro_quiz_score?: number | null
           qualifying?: number | null
+          tennis_tournament_score?: number | null
+          unique_answers_score?: number | null
+          whisper_game_score?: number | null
         }
         Relationships: []
       }
